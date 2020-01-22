@@ -1,5 +1,7 @@
 /*Brady Jacobson
 Code Challenge 2*/
+
+/*The creation of the database, schema, and three tables.*/
 Create Database CodeChallenge2;
 
 Create Schema Employ;
@@ -28,6 +30,7 @@ create Table Employ.EmpDetails(
 	State_1 varchar(20) Not Null,
 	Country varchar(20) Not Null
 );
+
 /*Create 3 rows for each*/
 insert into Employ.Department(Name,Location) values ('CS', 'Building_101');
 insert into Employ.Department(Name,Location) values ('MATH', 'Building_103');
@@ -54,11 +57,12 @@ select * from Employ.Employee where Employ.Employee.DeptId = 4;
 select sum(Employ.EmpDetails.Salary) from Employ.Employee Inner Join Employ.EmpDetails on Employ.Employee.ID = Employ.EmpDetails.EmployeeID where Employ.Employee.DeptID = 4;
 
 /*Report total employees by department*/
+select count(Employ.Employee.ID), Employ.Employee.DeptID from Employ.Employee group by Employ.Employee.DeptID;
 
+/*Increase Tina Smith's salary to $90000*/
+update Employ.EmpDetails Set Employ.EmpDetails.Salary = 90000 where Employ.EmpDetails.EmployeeID = 6;
 
-/*Change all employees to marketing*/
-/*update Employ.Employee Set Employ.Employee.DeptID = 3 where Employ.Employee.ID = 5;*/
-
+/*Select all rows from each table to manually observe changes in records.*/
 Select * from Employ.Department;
 Select * from Employ.Employee;
 Select * from Employ.EmpDetails;
